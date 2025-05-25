@@ -14,31 +14,8 @@ function get_CURL($url)
 
 $result = get_CURL('https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' . $channelId . '&key=AIzaSyBqFGD13a1ZbU9wmhZSjDZxtoHPgBByTcQ');
 
-$youtubeProfilePic = $result['items'][0]['snippet']['thumbnails']['medium']['url'];
-$channelName = $result['items'][0]['snippet']['title'];
-$subscriber = $result['items'][0]['statistics']['subscriberCount'];
 
-// latest video
-$urlLatestVideo = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyBqFGD13a1ZbU9wmhZSjDZxtoHPgBByTcQ&channelId=' . $channelId . '&maxResults=1&order=date&part=snippet';
-$result = get_CURL($urlLatestVideo);
-$latestVideoId = $result['items'][0]['id']['videoId'];
-
-// Instagram API
-$clientId = 'f0b022fbe68c4ae79dd51169af18feb4';
-$accessToken = '2934880.f0b022f.ed7efe3174cc4a41a5fc7bf68eabd909';
-
-$result = get_CURL('https://api.instagram.com/v1/users/self?access_token=2934880.f0b022f.ed7efe3174cc4a41a5fc7bf68eabd909');
-$usernameIG = $result['data']['username'];
-$profilePictureIG = $result['data']['profile_picture'];
-$followersIG = $result['data']['counts']['followed_by'];
-
-// latest IG Post
-$result = get_CURL('https://api.instagram.com/v1/users/self/media/recent/?access_token=2934880.f0b022f.ed7efe3174cc4a41a5fc7bf68eabd909&count=8');
-
-$photos = [];
-foreach ($result['data'] as $photo) {
-  $photos[] = $photo['images']['thumbnail']['url'];
-}
+  
 
 ?>
 <!doctype html>
@@ -84,7 +61,7 @@ foreach ($result['data'] as $photo) {
     <div class="jumbotron" id="home">
       <div class="container">
         <div class="text-center">
-          <img src="img/profile1.png" class="rounded-circle img-thumbnail">
+          <img src="img/profile2.png" class="rounded-circle img-thumbnail">
           <h1 class="display-4">Dyra Nadya Putri</h1>
           <h3 class="lead">Mahasiswa | Programmer | Youtuber</h3>
         </div>
@@ -180,7 +157,8 @@ foreach ($result['data'] as $photo) {
             <div class="card">
               <img class="card-img-top" src="img/thumbs/1.png" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><strong>JSON</strong><br>Latihan menggunakan File json.</p>
+                  <strong style="color: purple;">See Project</strong><br></p>
               </div>
             </div>
           </div>
@@ -189,7 +167,8 @@ foreach ($result['data'] as $photo) {
             <div class="card">
               <img class="card-img-top" src="img/thumbs/2.png" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><strong>WPU-HUT</strong><br>Mencari restoran yang Anda sukai di Google Maps, kemudian memasukkan atau menandai restoran tersebut ke dalam daftar pribadi atau publik yang Anda buat.</p>
+                <p></p><strong style="color: purple;">See Project</strong><br></p>
               </div>
             </div>
           </div>
@@ -198,7 +177,8 @@ foreach ($result['data'] as $photo) {
             <div class="card">
               <img class="card-img-top" src="img/thumbs/3.png" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><strong>WPU-MOVIE</strong><br>Fokus pada pembelajaran API OMDb API berbasis website dengan membuat sebuah website atau aplikasi yang bisa mencari dan menampilkan data film berdasarkan kata kunci yang dimasukkan pengguna.</p>
+                <p></p><strong style="color: purple;">See Project</strong><br></p>
               </div>
             </div>
           </div>   
@@ -209,7 +189,8 @@ foreach ($result['data'] as $photo) {
             <div class="card">
               <img class="card-img-top" src="img/thumbs/4.png" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><strong>WPU-PORTFOLIO</strong><br>Membuat Latihan API menggunakan Public API Youtube dan Instagram menggunakan CURL berbasis website.</p>
+                <p></p><strong style="color: purple;">See Project</strong><br></p>
               </div>
             </div>
           </div> 
@@ -217,8 +198,8 @@ foreach ($result['data'] as $photo) {
             <div class="card">
               <img class="card-img-top" src="img/thumbs/5.png" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
+                <p class="card-text"><strong>WPU-SERVER</strong><br>Membuat Rest Server menggunakan framework Codelgniter3.</p>
+                <p></p><strong style="color: purple;">See Project</strong><br></p>
               </div>
             </div>
           </div>
@@ -227,7 +208,8 @@ foreach ($result['data'] as $photo) {
             <div class="card">
               <img class="card-img-top" src="img/thumbs/6.png" alt="Card image cap">
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"><strong>WPU-REST-SERVER</strong><br>Membuat Rest Client menggunakan framework Codelgniter3 .</p>
+                <p></p><strong style="color: purple;">See Project</strong><br></p>
               </div>
             </div>
           </div>
@@ -258,7 +240,7 @@ foreach ($result['data'] as $photo) {
               <li class="list-group-item"><h3>Location</h3></li>
               <li class="list-group-item">My House</li>
               <li class="list-group-item">Jl. Pondok Kopi No.169 Siteba, Padang</li>
-              <li class="list-group-item">West Java, Indonesia</li>
+              <li class="list-group-item">West Sumatera, Indonesia</li>
             </ul>
           </div>
 
